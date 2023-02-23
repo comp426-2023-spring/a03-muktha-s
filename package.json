@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/comp426-2023-spring/a03-muktha-s#readme",
   "bin": {
-      "node-rps": "./bin/rps-cli.js"
+      "node-rps": "./bin/rps-cli.js",
       "node-rpsls": "rpsls-cli.js"
   },
   "dependencies": {
