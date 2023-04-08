@@ -11,15 +11,15 @@
     "url": "git+https://github.com/comp426-2023-spring/a03-muktha-s.git"
   },
   "author": "muktha-s",
-  "license": "MIT",
+  "license": "mit-license",
+  "bin": {
+    "node-rps": "./bin/rps-cli.js",
+    "node-rpsls": "./bin/rpsls-cli.js"
+  },
   "bugs": {
     "url": "https://github.com/comp426-2023-spring/a03-muktha-s/issues"
   },
   "homepage": "https://github.com/comp426-2023-spring/a03-muktha-s#readme",
-  "bin": {
-    "node-rps": "./bin/rps-cli.js",
-    "node-rpsls": "rpsls-cli.js"
-  },
   "dependencies": {
     "minimist": "^1.2.8"
   },

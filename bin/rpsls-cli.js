@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import {rpsls} from "../lib/rpsls.js"
+import rpsls from "../lib/rpsls.js"
 import minimist from "minimist"; 
 
 const args = minimist(process.argv.slice(2)); 
@@ -16,11 +16,9 @@ if (args.r || args.rules) {
 }
 
 try {
-   let result = rpsls(args._[0])
+   const result = rpsls(args._[0])
    console.log(JSON.stringify(result))
-   process.exit(0)
-} 
-catch(e) {
+} catch(e) {
    if (e instanceof RangeError) {
       displayHelpMsg();
       displayRuleMsg();
@@ -42,7 +40,6 @@ function displayHelpMsg() {
    console.log('')
    console.log('node-rpsls rock   Return JSON with results for RPSLS played against a simulated opponent.')
    console.log('                    e.g {"player":"rock","opponent":"Spock","result":"lose"}')
-
 }
 
 function displayRuleMsg() {

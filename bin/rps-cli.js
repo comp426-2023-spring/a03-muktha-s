@@ -1,6 +1,7 @@
 #!/usr/bin/env node
-import {rps} from '../lib/rpsls.js'; 
+
 import minimist from "minimist"; 
+import {rps} from "../lib/rpsls.js"; 
 
 const args = minimist(process.argv.slice(2)); 
 
@@ -15,8 +16,9 @@ if (args.r || args.rules) {
 }
 
 try {
-   let result = rps(args._[0])
-   console.log(JSON.stringify(result))
+   let res = rps(args._[0])
+   console.log(JSON.stringify(res))
+   process.exit(0)
 } catch (e) {
    if (e instanceof RangeError) {
       displayHelpMsg()
@@ -41,6 +43,7 @@ function displayHelpMsg() {
                       e.g {"player":"rock","opponent":"scissors","result":"win"}
      `
       );
+      process.exit(0); 
 } 
 
 function displayRuleMsg() {
@@ -48,4 +51,5 @@ function displayRuleMsg() {
     - Scissors CUTS Paper
     - Paper COVERS Rock
     - Rock CRUSHES Scissors`);
+    process.exit(0); 
 }
