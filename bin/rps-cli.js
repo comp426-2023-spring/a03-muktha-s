@@ -16,19 +16,18 @@ if (args.r || args.rules) {
 
 try {
    let result = rps(args._[0])
-   if (result != 'error') {
-	console.log(JSON.stringify(output)); 
+   console.log(JSON.stringify(result))
+} catch (e) {
+   if (e instanceof RangeError) {
+      displayHelpMsg()
+      displayRuleMsg()
+      process.exit(1)
    }
-   else {
-	  console.error('${args._[0]} is out of range.'); 
-	  displayHelpMsg(); 
-	  displayRuleMsg(); 
-} 
-    
+}
+
 
 function displayHelpMsg() {
     console.log(
-
    `Usage: node-rps [SHOT]
     Play Rock Paper Scissors (RPS)
     
@@ -41,14 +40,12 @@ function displayHelpMsg() {
       node-rps rock   Return JSON with results for RPS played against a simulated opponent.
                       e.g {"player":"rock","opponent":"scissors","result":"win"}
      `
-
       );
 } 
 
 function displayRuleMsg() {
-    console.log('Rules for Rock Paper Scissors:
+    console.log( `Rules for Rock Paper Scissors:
     - Scissors CUTS Paper
     - Paper COVERS Rock
-    - Rock CRUSHES Scissors')
-
+    - Rock CRUSHES Scissors`);
 }
