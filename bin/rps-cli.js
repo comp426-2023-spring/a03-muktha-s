@@ -15,17 +15,28 @@ if (args.r || args.rules) {
    process.exit(0); 
 }
 
-try {
-   let res = rps(args._[0])
-   console.log(JSON.stringify(res))
-   process.exit(0)
-} catch (e) {
-   if (e instanceof RangeError) {
-      displayHelpMsg()
-      displayRuleMsg()
-      process.exit(1)
+if (args._.length > 1) {
+   console.error("Arguments out of range");
+   displayHelpMsg(); 
+   displayRuleMsg();
+   process.exit(0); 
+} else if (args._.length === 0) {
+   console.log(JSON.stringify(rpsls.rpsDef()))
+} else {
+   let playerMove = args._[0].toLowerCase();
+   if (rpsls.rpsOps.includes(playerMove)) {
+      console.log(JSON.stringify(rpsls.rps(playerMove)))
+   } else {
+      console.error(
+         `
+         Invalid argument.
+         Acceptable arguments: rock | paper | scissors
+         `
+      );
+      displayRuleMsg(); 
    }
 }
+
 
 
 function displayHelpMsg() {
