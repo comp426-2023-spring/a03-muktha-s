@@ -15,14 +15,25 @@ if (args.r || args.rules) {
    process.exit(0)
 }
 
-try {
-   const result = rpsls(args._[0])
-   console.log(JSON.stringify(result))
-} catch(e) {
-   if (e instanceof RangeError) {
-      displayHelpMsg();
-      displayRuleMsg();
-      process.exit(1);
+if (args._.length > 1) {
+   console.error("Arguments out of range");
+   displayHelpMsg(); 
+   displayRuleMsg();
+   process.exit(0); 
+} else if (args._.length === 0) {
+   console.log(JSON.stringify(rpsls.rpslsDef()))
+} else {
+   let playerMove = args._[0].toLowerCase();
+   if (rpsls.rpsOps.includes(playerMove)) {
+      console.log(JSON.stringify(rpsls.rpsls(playerMove)))
+   } else {
+      console.error(
+         `
+         Invalid argument.
+         Acceptable arguments: rock | paper | scissors | lizard | spock
+         `
+      );
+      displayRuleMsg(); 
    }
 }
 
