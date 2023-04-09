@@ -24,7 +24,7 @@ if (args._.length > 1) {
    console.log(JSON.stringify(rpsls.rpslsDef()))
 } else {
    let playerMove = args._[0].toLowerCase();
-   if (rpsls.rpsOps.includes(playerMove)) {
+   if (rpsls.rpslsOps.includes(playerMove)) {
       console.log(JSON.stringify(rpsls.rpsls(playerMove)))
    } else {
       console.error(
