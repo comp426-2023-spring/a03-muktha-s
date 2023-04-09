@@ -16,7 +16,7 @@ if (args.r || args.rules) {
 }
 
 if (args._.length > 1) {
-   console.error("Arguments out of range");
+   console.error("Arguments out of range.");
    displayHelpMsg(); 
    displayRuleMsg();
    process.exit(0); 
@@ -54,7 +54,7 @@ function displayHelpMsg() {
 }
 
 function displayRuleMsg() {
-   console.log(`Rules for the Lizard-Spock Espansion of Rock Paper Scissors:\n
+   console.log(`Rules for the Lizard-Spock Expansion of Rock Paper Scissors:\n
   - Scissors CUTS Paper
   - Paper COVERS Rock
   - Rock SMOOSHES Lizard
